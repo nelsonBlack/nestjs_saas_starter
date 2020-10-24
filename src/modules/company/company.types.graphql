@@ -1,0 +1,121 @@
+type Query {
+  allCompanys(allCompanysInput: AllCompanysInput): [Company]
+  company(companyId: Int!): Company
+  allCompanysStats: CompanyStats
+}
+
+type Mutation {
+  createCompany(createCompanyInput: CreateCompanyInput): Company
+
+  updateCompany(updateCompanyInput: UpdateCompanyInput): Company
+
+  softDeleteCompany(companyId: Int!): Company
+  hardDeleteCompany(companyId: Int!): Company
+}
+
+type Subscription {
+  companyCreated(companyId: Int): Company
+  companySoftDeleted(companyId: Int): Company
+  companyUpdated(companyId: Int): Company
+  companyHardDeleted(companyId: Int): Company
+}
+
+type Company {
+  companyId: Int
+  name: String
+  country: String
+  route: String
+  locality: String
+  administrative_area_level_1: String
+  status: String
+  email: String
+  emailNotifications: String
+  headOffice: String
+  phoneNo: String
+  phoneNoNotifications: String
+  isAllowManualPayments: String
+  smsApiKey: String
+  smsUserName: String
+  startDate: String
+  endDate: String
+  position: String
+  latitude: Float
+  longitude: Float
+  logo: String
+  senderId: String
+  payBillNumber: String
+  registrationFee: Float
+  smsAmount: Float
+  createdAt: String
+  updatedAt: String
+  deletedAt: String
+  companyStaff: [CompanyStaff]
+}
+
+type CompanyStats {
+  total: Int
+  totalActive: Int
+  totalInactive: Int
+  totalMeters: Int
+  totalSoftDeleted: Int
+}
+
+input CreateCompanyInput {
+  name: String
+  country: String
+  route: String
+  locality: String
+  administrative_area_level_1: String
+  status: String
+  email: String
+  emailNotifications: String
+  headOffice: String
+  phoneNo: String
+  phoneNoNotifications: String
+  isAllowManualPayments: String
+  smsApiKey: String
+  smsUserName: String
+  startDate: String
+  endDate: String
+  position: String
+  latitude: Float
+  longitude: Float
+  logo: String
+  senderId: String
+  payBillNumber: String
+  registrationFee: Float
+  smsAmount: Float
+}
+
+input UpdateCompanyInput {
+  companyId: Int!
+  name: String
+  country: String
+  route: String
+  locality: String
+  administrative_area_level_1: String
+  status: String
+  email: String
+  emailNotifications: String
+  headOffice: String
+  phoneNo: String
+  phoneNoNotifications: String
+  isAllowManualPayments: String
+  smsApiKey: String
+  smsUserName: String
+  startDate: String
+  endDate: String
+  position: String
+  latitude: Float
+  longitude: Float
+  logo: String
+  senderId: String
+  payBillNumber: String
+  registrationFee: Float
+  smsAmount: Float
+}
+
+input AllCompanysInput {
+  companyId: Int
+  limit: Int
+}

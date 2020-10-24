@@ -1,0 +1,43 @@
+{
+   "type": "mysql",
+   "host": "localhost",
+   "port": 3306,
+   "bigNumberStrings": false,
+   "username": "root",
+   "password": "",
+   "database": "meter_reading_db",
+   "synchronize": false,
+   "logging": true,
+   "maxQueryExecutionTime": 50,
+   "entities": [
+    "dist/**/*.entity.js"
+   ],
+   "migrations":[
+     " __dirname + '/../migrations/*{.ts,.js}"
+    ],
+  
+   "cli": {
+     
+      "migrationsDir": "migration"
+      
+   }
+}
+
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "bigNumberStrings": false,
+  "username": "root",
+  "password": "",
+  "database": "nelson_cab",
+  "synchronize": false,
+  "logging": true,
+  "entities": ["src/**/**.entity{.ts,.js}"],
+  "migrations": ["migration/**/*.ts"],
+  "legacySpatialSupport": false,
+
+  "cli": {
+    "migrationsDir": "migration"
+  }
+}

@@ -1,0 +1,15 @@
+type Photo {
+  photoId: Int
+  url: String
+  customerId: Int
+  companyStaffId: Int
+  companyId: Int
+  photoType: String
+  isVerified: Boolean
+  createdAt: String
+  updatedAt: String
+  deletedAt: String
+  customer: Customer
+  company: Company
+  companyStaff: CompanyStaff
+}

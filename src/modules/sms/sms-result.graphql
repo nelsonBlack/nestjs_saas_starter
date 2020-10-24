@@ -1,0 +1,13 @@
+type SmsResult {
+  smsResultId: Int
+  cost: String
+  messageId: String
+  smsType: String
+  messageParts: Int
+  number: String
+  status: String
+  statusCode: Int
+  createdAt: String
+  updatedAt: String
+  deletedAt: String
+}

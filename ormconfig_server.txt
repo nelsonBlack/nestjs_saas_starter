@@ -1,0 +1,23 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "bigNumberStrings": false,
+  "username": "nelson",
+  "password": "23136",
+  "database": "meter_reading_db_test",
+  "synchronize": false,
+  "logging": false,
+  "entities": [
+   "src/**/**.entity{.ts,.js}"
+  ],
+  "migrations": [
+     "migration/**/*.ts"
+  ],
+ 
+  "cli": {
+    
+     "migrationsDir": "migration"
+     
+  }
+}

@@ -1,0 +1,65 @@
+type Query {
+  allCompanyStaffRoles(
+    allCompanyStaffRoleInput: AllCompanyStaffRoleInput
+  ): [CompanyStaffRole]
+  companyStaffRole(companyStaffRoleId: Int!): CompanyStaffRole
+  companyStaffRoleStats: CompanyStaffRoleStats
+}
+
+type Mutation {
+  createCompanyStaffRole(
+    createCompanyStaffRoleInput: CreateCompanyStaffRoleInput
+  ): CompanyStaffRole
+
+  updateCompanyStaffRole(
+    updateCompanyStaffRoleInput: UpdateCompanyStaffRoleInput
+  ): CompanyStaffRole
+
+  softDeleteCompanyStaffRole(companyStaffRoleId: Int!): CompanyStaffRole
+  hardDeleteCompanyStaffRole(companyStaffRoleId: Int!): CompanyStaffRole
+}
+
+type Subscription {
+  companyStaffRoleCreated(companyId: Int): CompanyStaffRole
+  companyStaffRoleSoftDeleted(companyId: Int): CompanyStaffRole
+  companyStaffRoleUpdated(companyId: Int): CompanyStaffRole
+  companyStaffRoleHardDeleted(companyId: Int): CompanyStaffRole
+}
+
+type CompanyStaffRole {
+  companyStaffRoleId: Int
+  companyId: Int
+  status: String
+  name: String
+  displayName: String
+  createdAt: String
+  updatedAt: String
+  deletedAt: String
+  company: Company
+  companyStaffs: CompanyStaff
+}
+
+type CompanyStaffRoleStats {
+  total: Int
+}
+
+input AllCompanyStaffRoleInput {
+  companyStaffRoleId: Int
+  companyId: Int
+  limit: Int
+}
+
+input CreateCompanyStaffRoleInput {
+  companyId: Int
+  status: String
+  name: String
+  displayName: String
+}
+
+input UpdateCompanyStaffRoleInput {
+  companyStaffRoleId: Int!
+  companyId: Int
+  status: String
+  name: String
+  displayName: String
+}

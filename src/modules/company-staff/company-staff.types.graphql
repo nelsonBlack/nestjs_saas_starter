@@ -1,0 +1,108 @@
+type Query {
+  allCompanyStaff(companyStaffId: Int, companyId: Int): [CompanyStaff]
+  companyStaff(companyStaffId: Int!): CompanyStaff
+  companyStaffStats: CompanyStaffStats
+}
+
+type Mutation {
+  generateSuperAdminJWT(companyStaffId: Int, companyId: Int): String
+  changePassword(
+    newPassword: String
+    oldPassword: String
+    email: String
+  ): CompanyStaff
+  requestResetPassword(newPassword: String, email: String): CompanyStaff
+  login(email: String, password: String): CompanyStaff
+  createCompanyStaff(
+    createCompanyStaffInput: CreateCompanyStaffInput
+  ): CompanyStaff
+
+  updateCompanyStaff(
+    updateCompanyStaffInput: UpdateCompanyStaffInput
+  ): CompanyStaff
+
+  softDeleteCompanyStaff(companyStaffId: Int!): CompanyStaff
+  hardDeleteCompanyStaff(companyStaffId: Int!): CompanyStaff
+}
+
+type Subscription {
+  companyStaffCreated(companyId: Int): CompanyStaff
+  companyStaffSoftDeleted(companyId: Int): CompanyStaff
+  companyStaffUpdated(companyId: Int): CompanyStaff
+  companyStaffHardDeleted(companyId: Int): CompanyStaff
+}
+
+type CompanyStaff {
+  companyStaffId: Int
+  companyId: Int
+  firstName: String
+  middleName: String
+  lastName: String
+  email: String
+  gender: String
+  userName: String
+  verifiedEmail: Boolean
+  verifiedPhoneNumber: Boolean
+  profilePhoto: String
+  phone: String
+  status: String
+  role: String
+  avatarUrl: String
+  password: String
+  rememberToken: String
+  createdAt: String
+  updatedAt: String
+  deletedAt: String
+  company: Company
+  token: String
+}
+
+type CompanyStaffStats {
+  total: Int
+  totalMeterReader: Int
+  totalItManager: Int
+  totalAccountant: Int
+  totalManager: Int
+  totalStaff: Int
+  totalActive: Int
+  totalInactive: Int
+  totalSecretary: Int
+  totalSoftDeleted: Int
+}
+
+input CreateCompanyStaffInput {
+  companyId: Int
+  firstName: String
+  password: String
+  middleName: String
+  profilePhoto: String
+  lastName: String
+  email: String
+  gender: String
+  userName: String
+  verifiedEmail: Boolean
+  verifiedPhoneNumber: Boolean
+  phone: String
+  status: String
+  base64Image: String
+  role: String
+}
+
+input UpdateCompanyStaffInput {
+  companyStaffId: Int!
+  companyId: Int
+  firstName: String
+  password: String
+  middleName: String
+  profilePhoto: String
+  lastName: String
+  email: String
+  gender: String
+  userName: String
+  verifiedEmail: Boolean
+  verifiedPhoneNumber: Boolean
+  phone: String
+  status: String
+  base64Image: String
+  role: String
+}

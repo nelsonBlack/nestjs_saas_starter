@@ -1,0 +1,126 @@
+type Query {
+  allCustomers(allCustomersInput: AllCustomersInput): [Customer]
+  customer(customerId: Int!): Customer
+  customerStats: CustomerStats
+}
+
+type Mutation {
+  changeCustomerPassword(
+    newPassword: String
+    oldPassword: String
+    email: String
+  ): Customer
+  requestResetCustomerPassword(newPassword: String, email: String): Customer
+  loginCustomer(email: String, password: String): Customer
+  createCustomer(createCustomerInput: CreateCustomerInput): Customer
+
+  updateCustomer(updateCustomerInput: UpdateCustomerInput): Customer
+
+  softDeleteCustomer(customerId: Int!): Customer
+  hardDeleteCustomer(customerId: Int!): Customer
+}
+
+input AllCustomersInput {
+  customerId: Int
+  companyId: Int
+  limit: Int
+}
+
+type Subscription {
+  customerCreated(companyId: Int): Customer
+  customerSoftDeleted(companyId: Int): Customer
+  customerUpdated(companyId: Int): Customer
+  customerHardDeleted(companyId: Int): Customer
+}
+
+type Customer {
+  customerId: Int
+  companyId: Int
+  firstName: String
+  middleName: String
+  lastName: String
+  organizationId: Int
+  organizationDepartmentId: Int
+  email: String
+  gender: String
+  userName: String
+  verifiedEmail: String
+  otpCode: String
+  verifiedPhoneNumber: Boolean
+  profilePhoto: String
+  lastLng: Float
+  lastLat: Float
+  phone: String
+  status: String
+  role: String
+  avatarUrl: String
+  password: String
+  rememberToken: String
+  createdAt: String
+  updatedAt: String
+  deletedAt: String
+  company: Company
+  token: String
+  photo: [Photo]
+}
+
+type CustomerStats {
+  total: Int
+  totalActive: Int
+  totalInactive: Int
+}
+
+input CreateCustomerInput {
+  companyId: Int
+  firstName: String
+  middleName: String
+  lastName: String
+  organizationId: Int
+  organizationDepartmentId: Int
+  base64Image: String
+  email: String
+  gender: String
+  userName: String
+  verifiedEmail: String
+  verifiedPhoneNumber: Boolean
+  profilePhoto: String
+  phone: String
+  status: String
+  role: String
+  avatarUrl: String
+  password: String
+  rememberToken: String
+  createdAt: String
+  updatedAt: String
+  deletedAt: String
+  token: String
+}
+
+input UpdateCustomerInput {
+  customerId: Int!
+  firstName: String
+  middleName: String
+  lastName: String
+  companyId: Int
+
+  organizationId: Int
+  organizationDepartmentId: Int
+  email: String
+  gender: String
+  userName: String
+  verifiedEmail: String
+  verifiedPhoneNumber: Boolean
+  lastLng: Float
+  lastLat: Float
+  profilePhoto: String
+  phone: String
+  status: String
+  role: String
+
+  password: String
+  rememberToken: String
+  createdAt: String
+  updatedAt: String
+  deletedAt: String
+  token: String
+}

@@ -1,0 +1,78 @@
+type Query {
+  allCompanyDepartments(
+    allCompanyDepartmentsInput: AllCompanyDepartmentsInput
+  ): [CompanyDepartment]
+  companyDepartment(companyDepartmentId: Int!): CompanyDepartment
+  allCompanyDepartmentStats: CompanyDepartmentStats
+}
+
+type Mutation {
+  createCompanyDepartment(
+    createCompanyDepartmentInput: CreateCompanyDepartmentInput
+  ): CompanyDepartment
+
+  updateCompanyDepartment(
+    updateCompanyDepartmentInput: UpdateCompanyDepartmentInput
+  ): CompanyDepartment
+
+  softDeleteCompanyDepartment(companyDepartmentId: Int!): CompanyDepartment
+  hardDeleteCompanyDepartment(companDepartmentyId: Int!): CompanyDepartment
+}
+
+type Subscription {
+  companyDepartmentCreated(companyDepartmentId: Int): CompanyDepartment
+  companyDepartmentSoftDeleted(companyDepartmentId: Int): CompanyDepartment
+  companyDepartmentUpdated(companyDepartmentId: Int): CompanyDepartment
+  companyDepartmentHardDeleted(companyDepartmentId: Int): CompanyDepartment
+}
+
+type CompanyDepartment {
+  companyDepartmentId: Int
+  companyId: Int
+  name: String
+  description: String
+  status: String
+  email: String
+  emailNotifications: String
+  phoneNo: String
+  phoneNoNotifications: String
+  createdAt: String
+  updatedAt: String
+  deletedAt: String
+  company: Company
+  companyStaff: [CompanyStaff]
+}
+
+type CompanyDepartmentStats {
+  total: Int
+  totalActive: Int
+  totalInactive: Int
+}
+
+input CreateCompanyDepartmentInput {
+  companyId: Int
+  name: String
+  description: String
+  status: String
+  email: String
+  emailNotifications: String
+  phoneNo: String
+  phoneNoNotifications: String
+}
+
+input UpdateCompanyDepartmentInput {
+  companyDepartmentId: Int
+  companyId: Int
+  name: String
+  description: String
+  status: String
+  email: String
+  emailNotifications: String
+  phoneNo: String
+  phoneNoNotifications: String
+}
+
+input AllCompanyDepartmentsInput {
+  companyDepartmentId: Int
+  limit: Int
+}
